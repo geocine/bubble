@@ -33,6 +33,8 @@ func main() {
 		})
 	})
 
+	router.Static("/assets", "./assets")
+
 	// WebSocket
 	router.GET("/chat/ws", func(c *gin.Context) {
 		handler := websocket.Handler(connect)
@@ -68,6 +70,7 @@ type SendMessage struct {
 	UserID   string     `json:"userId"`
 	Type     string     `json:"type"`
 	Message  string     `json:"message"`
+	User     string     `json:"user"`
 	UserList []ChatUser `json:"userList"`
 }
 
@@ -103,7 +106,8 @@ func connect(connection *websocket.Conn) {
 		if receiveMessage.Type == UserMessage {
 			incomingMessage <- SendMessage{
 				Type:    "message",
-				Message: fmt.Sprintf("%s: %s", chatUser.Name, receiveMessage.Text),
+				User:    chatUser.Name,
+				Message: receiveMessage.Text,
 			}
 		} else if receiveMessage.Type == UserName {
 			chatUser.Name = receiveMessage.Text
