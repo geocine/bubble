@@ -1,5 +1,7 @@
 # bubble
 
+![](https://i.imgur.com/OEVOh3Y.gif)
+
 A slack like chat built with the following technologies:
 
 ## Backend
