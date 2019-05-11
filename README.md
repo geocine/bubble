@@ -1,6 +1,6 @@
 # bubble
 
-![](https://i.imgur.com/OEVOh3Y.gif)
+![](https://i.imgur.com/FRgdZZ0.gif)
 
 A slack like chat built with the following technologies:
 
